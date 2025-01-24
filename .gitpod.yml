@@ -1,0 +1,10 @@
+image:
+  file: Dockerfile
+
+tasks:
+  - init: |
+      echo "Setting up QEMU and noVNC"
+  - command: |
+      websockify --web=/usr/share/novnc/ 6080 :5900 &
+
+      qemu-system-x86_64 -hda test.img -m 512 -vnc :0
