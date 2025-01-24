@@ -5,13 +5,13 @@ tasks:
   - init: |
       echo "Initializing workspace..."
       # Create a 20GB virtual hard disk for Windows installation
-      qemu-img create -f qcow2 win10.img 20G
+      qemu-img create -f qcow2 win10.img 50G
       # Download Windows 10 ISO (replace this link with your own if needed)
-      wget -O windows10.iso "https://software-download.microsoft.com/pr/Win10_21H2_English_x64.iso"
+      wget -O windows10.iso "https://dl.malwarewatch.org/windows/Windows-10-1607.iso"
   - command: |
       echo "Starting QEMU and noVNC..."
       # Start noVNC server
-      websockify --web=/usr/share/novnc/ 6080 :5900 &
+      websockify --web=/usr/share/novnc/ 6969 :5900 &
       # Start QEMU and boot Windows 10 ISO
       qemu-system-x86_64 \
         -m 4096 \
